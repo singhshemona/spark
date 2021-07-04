@@ -1,12 +1,17 @@
 import Head from "next/head";
 import Link from "next/link";
-import { getDatabase } from "../lib/notion";
+import { getDatabase, getBlocks } from "../lib/notion";
 import { Text } from "./[id].js";
 import styles from "./index.module.css";
 
 export const databaseId = process.env.NOTION_DATABASE_ID;
 
-export default function Home({ posts }) {
+// const testFunc = async () => {
+//   const database = await getDatabase(databaseId);
+//   console.log(database)
+// };
+
+export default function Home({ posts, test }) {
   return (
     <div>
       <Head>
@@ -62,7 +67,10 @@ export default function Home({ posts }) {
 
         <h2 className={styles.heading}>All Posts</h2>
         <ol className={styles.posts}>
-          {posts.map((post) => {
+          {console.log(posts)}
+          {console.log(test)}
+        <button onClick={() => {window.location.href = window.origin}}>New Note</button>
+          {/* {posts.map((post) => {
             const date = new Date(post.last_edited_time).toLocaleString(
               "en-US",
               {
@@ -72,11 +80,12 @@ export default function Home({ posts }) {
               }
             );
             return (
-              <li key={post.id} className={styles.post}>
+              <li key={post.id}>
                 <h3 className={styles.postTitle}>
                   <Link href={`/${post.id}`}>
                     <a>
-                      <Text text={post.properties.Name.title} />
+                      {console.log(post)}
+                      <Text text={post.properties.Title} />
                     </a>
                   </Link>
                 </h3>
@@ -87,20 +96,34 @@ export default function Home({ posts }) {
                 </Link>
               </li>
             );
-          })}
+          })} */}
         </ol>
       </main>
     </div>
   );
 }
 
+function getRandomIndex(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min) + min);
+}
+
 export const getStaticProps = async () => {
   const database = await getDatabase(databaseId);
+  const randomIndex = getRandomIndex(0, database.length)
+
+  const pageDetails = database[randomIndex]
+  
+  const blockId = database[randomIndex].id
+  const block = await getBlocks(blockId)
 
   return {
     props: {
-      posts: database,
+      test: pageDetails,
+      posts: block
     },
     revalidate: 1,
   };
 };
+
