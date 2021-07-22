@@ -1,16 +1,14 @@
 import Head from "next/head";
-import Link from "next/link";
 import { getDatabase, getBlocks } from "../lib/notion";
-import { Text } from "./[id].js";
 import styles from "./index.module.css";
 
 export const databaseId = process.env.NOTION_DATABASE_ID;
 
-export default function Home({ posts, test }) {
+export default function Home({ title, content }) {
   return (
     <div>
       <Head>
-        <title>Notion Next.js blog</title>
+        <title>Shemona's Spark</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
@@ -26,38 +24,10 @@ export default function Home({ posts, test }) {
             </a>.
           </p>
         </header>
-
-        <h2 className={styles.heading}>All Posts</h2>
-          {console.log(posts)}
-          {console.log(test)}
-        <button onClick={() => {window.location.href = window.origin}}>New Note</button>
-          {/* {posts.map((post) => {
-            const date = new Date(post.last_edited_time).toLocaleString(
-              "en-US",
-              {
-                month: "short",
-                day: "2-digit",
-                year: "numeric",
-              }
-            );
-            return (
-              <li key={post.id}>
-                <h3 className={styles.postTitle}>
-                  <Link href={`/${post.id}`}>
-                    <a>
-                      {console.log(post)}
-                      <Text text={post.properties.Title} />
-                    </a>
-                  </Link>
-                </h3>
-
-                <p className={styles.postDescription}>{date}</p>
-                <Link href={`/${post.id}`}>
-                  <a> Read post →</a>
-                </Link>
-              </li>
-            );
-          })} */}
+        <h2 className={styles.heading}>Remixer</h2>
+        <p>{title}</p>
+        <p>{content}</p>
+        <button onClick={() => {window.location.href = window.origin}}>Generate New Note</button>
       </main>
     </div>
   );
@@ -74,14 +44,16 @@ export const getStaticProps = async () => {
   const randomIndex = getRandomIndex(0, database.length)
 
   const pageDetails = database[randomIndex]
+  const pageNote = pageDetails.properties.Title.title[0].plain_text
   
   const blockId = database[randomIndex].id
   const block = await getBlocks(blockId)
+  const blockText = block[0].paragraph.text[0].plain_text
 
   return {
     props: {
-      test: pageDetails,
-      posts: block
+      title: pageNote,
+      content: blockText
     },
     revalidate: 1,
   };
