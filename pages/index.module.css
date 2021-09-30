@@ -7,13 +7,8 @@
   transform: translate(-50%, -50%);
 }
 
-.title {
-  font-size: 30px;
-  font-weight: 300;
-}
-
 .quote {
-  font-size: 18px;
+  font-size: 22px;
   margin: 50px 0;
 }
 
@@ -25,6 +20,18 @@
   border-left: 4px solid #F5D6BA;
   padding-left: 10px;
   font-weight: 300;
+  font-style: italic;
+  max-height: 400px;
+  overflow: scroll;
+}
+
+.source {
+  font-size: 18px;
+  font-weight: 300;
+}
+
+.sourceTitle {
+  font-weight: 500;
 }
 
 .button {
@@ -32,6 +39,7 @@
   border-radius: 8px;
   border: 0;
   color: #2C2C54;
+  cursor: pointer;
   display: block;
   font-family: 'Noto Sans Display', sans-serif;
   font-size: 15px;
