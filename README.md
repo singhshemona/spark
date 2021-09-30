@@ -4,6 +4,12 @@ __Demo:__ [https://notion-blog-nextjs-coral.vercel.app](https://notion-blog-next
 
 __How-it-works/Documentation:__ [https://samuelkraft.com/blog/building-a-notion-blog-with-public-api](https://samuelkraft.com/blog/building-a-notion-blog-with-public-api)
 
+
+The data for this chrome extension comes from [https://www.notion.so/35de7cb65366432eb56d815a97a4767e](this table). 
+
+It was remixed [https://github.com/samuelkraft/notion-blog-nextjs](from the following repo).
+
+
 ## Getting Started
 
 First, follow Notions [getting started guide](https://developers.notion.com/docs/getting-started) to get a `NOTION_TOKEN` and a `NOTION_DATABASE_ID`, then add them to a file called `.env.local`.
