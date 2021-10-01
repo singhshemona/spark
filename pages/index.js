@@ -18,7 +18,7 @@ export default function Home({ summary, content, source, emoji }) {
         </div>
         <p className={styles.source}><span className={styles.sourceTitle}>Source:</span> {emoji} {source}</p>
       </main>
-      <button className={styles.button} onClick={() => {window.location.href = window.origin}}>Generate New Note</button>
+      <button className={styles.button} onClick={() => window.location.reload(false)}>Generate New Note</button>
       <a className={styles.link} target="_blank" href='https://www.notion.so/35de7cb65366432eb56d815a97a4767e' className={styles.heading}>Slip-Box</a>
     </div>
   );

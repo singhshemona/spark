@@ -8,11 +8,11 @@
 }
 
 .quote {
-  font-size: 22px;
   margin: 50px 0;
 }
 
 .summary {
+  font-size: 22px;
   font-weight: 500;
 }
 
@@ -20,9 +20,13 @@
   border-left: 4px solid #F5D6BA;
   padding-left: 10px;
   font-weight: 300;
-  font-style: italic;
+  font-size: 18px;
   max-height: 400px;
   overflow: scroll;
+}
+
+.content p {
+  margin: 5px 0;
 }
 
 .source {
