@@ -1,6 +1,6 @@
 import Head from "next/head";
 import { getDatabase, getBlocks, getPage } from "../lib/notion";
-import styles from "./index.module.css";
+import styles from "../styles/index.module.css";
 
 export const databaseId = process.env.NOTION_DATABASE_ID;
 
