@@ -19,7 +19,7 @@ export default function Home({ summary, content, source, emoji }) {
         <p className={styles.source}><span className={styles.sourceTitle}>Source:</span> {emoji} {source}</p>
       </main>
       <form action="https://slip-box-sparks.herokuapp.com">
-        <input className={styles.button} type="submit" value="Generate New Note" />
+        <input className={styles.button} type="submit" value="New Spark" />
       </form>
       <a className={styles.link} target="_blank" href='https://www.notion.so/35de7cb65366432eb56d815a97a4767e' className={styles.heading}>Slip-Box</a>
     </div>
