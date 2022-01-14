@@ -13,6 +13,16 @@ export default function Home({ summary, content, source, emoji }) {
         <title>Spark</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <h1 className={styles.heading}>✨ Welcome to Spark ✨</h1>
+      <h3 className={styles.subHeading}>This is a tool to retrieve different{' '} 
+        <a className={styles.link} href='https://shemonasingh.com/applying-zettelkasten-to-notion' target="_blank">
+          zettels
+        </a> 
+        {' '}from my{' '}
+        <a className={styles.link} href='https://www.notion.so/35de7cb65366432eb56d815a97a4767e' target="_blank">
+          slip-box
+        </a> 
+        {' '}of growing highlights. Click on the "New Spark" button for a different highlight.</h3>
       <main className={styles.quote}>
         <p className={styles.summary}>{summary}</p>
         <div className={styles.content}>
@@ -20,21 +30,19 @@ export default function Home({ summary, content, source, emoji }) {
         </div>
         <p className={styles.source}><span className={styles.sourceTitle}>Source:</span> {emoji} {source}</p>
       </main>
+      <input 
+        onClick={() => {
+          location.reload()
+          setLoading(true)
+        }} 
+        className={styles.button} 
+        type="submit" 
+        value="New Spark" 
+      />
       {
-        loading ?
-        <p>Loading new spark...</p> 
-        :
-        <input 
-          onClick={() => {
-            location.reload()
-            setLoading(true)
-          }} 
-          className={styles.button} 
-          type="submit" 
-          value="New Spark" 
-        />
+        loading &&
+        <p className={styles.loading}>Loading new spark...</p> 
       }
-      <a className={styles.link} href='https://www.notion.so/35de7cb65366432eb56d815a97a4767e' target="_blank">Slip-Box</a>
     </div>
   );
 }

@@ -1,14 +1,48 @@
+/* =============== SHARED STYLES =============== */
+
+.button,
+.loading,
+.link,
+.link:visited {
+  color: #2C2C54;
+}
+
+/* =============== INDIVIDUAL STYLES =============== */
+
 .container {
-  -webkit-transform: translate(-50%, -50%);
-  left: 50%;
-  max-width: 700px;
-  position: absolute;
-  top: 50%;
-  transform: translate(-50%, -50%);
+  margin: 40px 30px auto 30px;
+}
+
+@media (min-width: 800px) {
+  .container {
+    max-width: 700px;
+    margin: 80px auto auto auto;
+  }
+}
+
+.heading {
+  font-size: 28px;
+}
+
+.subHeading {
+  font-size: 16px;
+  font-weight: 300;
+  margin-top: 10px;
+}
+
+.link {
+  display: inline-block;
+  text-decoration: underline;
 }
 
 .quote {
-  margin: 50px 0;
+  margin: 40px 20px;
+}
+
+@media (min-width: 800px) {
+  .quote {
+    margin: 50px 20px;
+  }
 }
 
 .summary {
@@ -18,12 +52,12 @@
 
 .content {
   border-left: 4px solid #F5D6BA;
-  padding-left: 10px;
-  font-weight: 300;
   font-size: 18px;
+  font-weight: 300;
+  margin: 15px 0;
   max-height: 400px;
   overflow: scroll;
-  margin: 15px 0;
+  padding-left: 10px;
 }
 
 .content p {
@@ -43,7 +77,6 @@
   background: #F5D6BA;
   border-radius: 8px;
   border: 0;
-  color: #2C2C54;
   cursor: pointer;
   display: block;
   font-family: 'Noto Sans Display', sans-serif;
@@ -52,13 +85,14 @@
   padding: 8px;
 }
 
-.link {
-  color: #2C2C54;
-  text-decoration: underline;
-  margin-top: 15px;
-  display: block;
+.button:hover {
+  background: #ddc1a7;
+  transition: ease .4s;
 }
 
-.link:visited {
-  color: #2C2C54;
+.loading {
+  display: block;
+  font-style: italic;
+  margin-top: 12px;
+  opacity: 0.7;
 }
