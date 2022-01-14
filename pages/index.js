@@ -1,10 +1,12 @@
 import Head from "next/head";
+import { useState } from 'react'; 
 import { getDatabase, getBlocks, getPage } from "../lib/notion";
 import styles from "../styles/index.module.css";
 
 export const databaseId = process.env.NOTION_DATABASE_ID;
 
 export default function Home({ summary, content, source, emoji }) {
+  const [ loading, setLoading ] = useState(false)
   return (
     <div className={styles.container}>
       <Head>
@@ -18,22 +20,31 @@ export default function Home({ summary, content, source, emoji }) {
         </div>
         <p className={styles.source}><span className={styles.sourceTitle}>Source:</span> {emoji} {source}</p>
       </main>
-      <form action="https://slip-box-sparks.herokuapp.com">
-        <input className={styles.button} type="submit" value="New Spark" />
-      </form>
-      <a className={styles.link} target="_blank" href='https://www.notion.so/35de7cb65366432eb56d815a97a4767e' className={styles.heading}>Slip-Box</a>
+      {
+        loading ?
+        <p>Loading new spark...</p> 
+        :
+        <input 
+          onClick={() => {
+            location.reload()
+            setLoading(true)
+          }} 
+          className={styles.button} 
+          type="submit" 
+          value="New Spark" 
+        />
+      }
+      <a className={styles.link} href='https://www.notion.so/35de7cb65366432eb56d815a97a4767e' target="_blank">Slip-Box</a>
     </div>
   );
 }
 
 function getRandomIndex(min, max) {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min) + min);
+  return Math.floor(Math.random() * (max - min) + min)
 }
 
 export const getStaticProps = async () => {
-  const database = await getDatabase(databaseId);
+  const database = await getDatabase(databaseId)
   const randomIndex = getRandomIndex(0, database.length)
 
   const pageDetails = database[randomIndex]

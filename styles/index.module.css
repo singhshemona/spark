@@ -23,6 +23,7 @@
   font-size: 18px;
   max-height: 400px;
   overflow: scroll;
+  margin: 15px 0;
 }
 
 .content p {
@@ -48,13 +49,14 @@
   font-family: 'Noto Sans Display', sans-serif;
   font-size: 15px;
   font-weight: 500;
-  margin-bottom: 15px;
   padding: 8px;
 }
 
 .link {
   color: #2C2C54;
   text-decoration: underline;
+  margin-top: 15px;
+  display: block;
 }
 
 .link:visited {
