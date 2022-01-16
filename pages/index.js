@@ -32,7 +32,7 @@ export default function Home({ summary, content, source, emoji }) {
       </main>
       <input 
         onClick={() => {
-          window.location.reload(true)
+          window.location.href = window.location.href
           setLoading(true)
         }} 
         className={styles.button} 
