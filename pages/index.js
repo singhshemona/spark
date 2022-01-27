@@ -14,7 +14,7 @@ export default function Home({ summary, content, source, emoji }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <h1 className={styles.heading}>✨ Welcome to Spark ✨</h1>
-      <h3 className={styles.subHeading}>This is a tool to retrieve different{' '} 
+      <h3 className={styles.subHeading}>This is a tool to retrieve{' '} 
         <a className={styles.link} href='https://shemonasingh.com/applying-zettelkasten-to-notion' target="_blank">
           zettels
         </a> 
@@ -33,8 +33,10 @@ export default function Home({ summary, content, source, emoji }) {
       <input 
         onClick={() => {
           setLoading(true)
-          window.location.href = 'https://slip-box-sparks.herokuapp.com/'
-          setLoading(false)
+          setTimeout(() => {
+            window.location.href = 'https://slip-box-sparks.herokuapp.com/'
+            setLoading(false)
+          }, 200)
         }} 
         className={styles.button} 
         type="submit" 
