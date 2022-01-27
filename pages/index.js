@@ -33,10 +33,8 @@ export default function Home({ summary, content, source, emoji }) {
       <input 
         onClick={() => {
           setLoading(true)
-          setTimeout(() => {
-            window.location.href = 'https://slip-box-sparks.herokuapp.com/'
-            setLoading(false)
-          }, 200)
+          window.location.href = 'https://slip-box-sparks.herokuapp.com/'
+          setLoading(false)
         }} 
         className={styles.button} 
         type="submit" 
